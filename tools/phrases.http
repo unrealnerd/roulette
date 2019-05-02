@@ -9,7 +9,7 @@ GET {{url}}/phrases HTTP/1.1
 GET {{url}}/phrases/1 HTTP/1.1
 
 
-### --- Create a Profile --- ###
+### --- Create a Phrase --- ###
 # @createProfile
 POST {{url}}/phrases/create HTTP/1.1
 Content-Type:application/json
