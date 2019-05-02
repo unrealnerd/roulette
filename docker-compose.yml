@@ -1,0 +1,30 @@
+version: '3.4'
+services:
+  mongo:
+    image: mongo    
+    container_name: mongo    
+    volumes:
+      - ./data:/data/db #maps data directory
+    restart: always
+    ports:
+      - 27017:27017
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    depends_on:
+      - mongo
+  roulette-api:
+    container_name: roulette-api
+    image: rouletteapi
+    build:
+      context: ./roulette.api
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=container
+    depends_on:
+      - mongo

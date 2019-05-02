@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using roulette.api;
+using roulette.api.Options;
+using roulette.api.Repository;
 
 namespace roulette.api
 {
@@ -25,6 +28,11 @@ namespace roulette.api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped(typeof(IDataContext<>), typeof(DataContext<>));
+            services.AddScoped(typeof(IRepository<>), typeof(MongoRepository<>));
+
+            services.Configure<PhrasesOptions>(Configuration.GetSection("Phrases"));
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

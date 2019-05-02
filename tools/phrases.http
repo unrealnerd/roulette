@@ -1,0 +1,20 @@
+@url = http://localhost:5000/api
+
+### --- Gets one random Phrase --- ###
+# @name getRandomPhrase
+GET {{url}}/phrases HTTP/1.1
+
+### --- Gets a Profile --- ###
+# @name getProfile
+GET {{url}}/phrases/1 HTTP/1.1
+
+
+### --- Create a Profile --- ###
+# @createProfile
+POST {{url}}/phrases/create HTTP/1.1
+Content-Type:application/json
+
+{
+    "key": "A Fool and His Money are Soon Parted",
+    "value": "It's easy for a fool to lose his/her money."
+}
