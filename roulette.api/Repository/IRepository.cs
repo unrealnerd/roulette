@@ -14,5 +14,7 @@ namespace roulette.api.Repository
         Task Remove(string id);
         Task<List<T>> Query(FilterDefinition<T> filter);
         Task<List<T>> Random(int N);
+        Task<List<T>> First(int N);
+        Task<List<T>> Last(int N);
     }
 }

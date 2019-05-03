@@ -1,20 +1,29 @@
 @url = http://localhost:5000/api
 
 ### --- Gets one random Phrase --- ###
-# @name getRandomPhrase
+# @name getNRandomPhrase
 GET {{url}}/phrases HTTP/1.1
 
-### --- Gets a Profile --- ###
-# @name getProfile
-GET {{url}}/phrases/1 HTTP/1.1
+### --- Gets First N Phrase --- ###
+# @name getFirstNPhrase
+GET {{url}}/phrases/first/3 HTTP/1.1
+
+### --- Gets Last N Phrase --- ###
+# @name getFirstNPhrase
+GET {{url}}/phrases/last/3 HTTP/1.1
 
 
-### --- Create a Phrase --- ###
-# @createProfile
-POST {{url}}/phrases/create HTTP/1.1
+### --- Gets Phrases by Id --- ###
+# @name getPhraseById
+GET {{url}}/phrases/getbyid/{{getNRandomPhrase.response.body.$[0].id}} HTTP/1.1
+
+
+### --- Creates a Phrase --- ###
+# @createPhrase
+POST {{url}}/phrases HTTP/1.1
 Content-Type:application/json
 
 {
-    "key": "A Fool and His Money are Soon Parted",
-    "value": "It's easy for a fool to lose his/her money."
+    "key": "You Can’t Have Your Cake And Eat It Too",
+    "value": "This proverb highlights how sometimes there might be two desirable things that someone wants, but they can’t have both of those things because they contradict each other."
 }

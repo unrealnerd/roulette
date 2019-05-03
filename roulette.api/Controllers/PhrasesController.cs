@@ -19,34 +19,48 @@ namespace roulette.api.Controllers
             PhrasesRepo = phrasesRepo;
         }
 
-        // GET api/phrases
+        // GET api/phrases/1
         [HttpGet("{N?}")]
         public async Task<ActionResult<IList<RouletteKeyValue>>> Get(int? N = 1)
         {
             return Ok(await PhrasesRepo.Random((int)N));
         }
 
+        // GET api/phrases/first/1
+        [HttpGet("first/{N}")]
+        public async Task<ActionResult<IList<RouletteKeyValue>>> First(int N = 1)
+        {
+            return Ok(await PhrasesRepo.First(N));
+        }
 
-        [Route("/GetById/{id}")]
+        // GET api/phrases/1
+        [HttpGet("last/{N}")]
+        public async Task<ActionResult<IList<RouletteKeyValue>>> Last(int N = 1)
+        {
+            return Ok(await PhrasesRepo.Last(N));
+        }
+
+
+        [Route("GetById/{id}")]
         public async Task<ActionResult<RouletteKeyValue>> GetById(string id)
         {
             return Ok(await PhrasesRepo.Get(id));
         }
 
-        // POST api/values
+        // POST api/phrases
         [HttpPost]
         public async void Post([FromBody] RouletteKeyValue value)
         {
             await PhrasesRepo.Create(value);
         }
 
-        // PUT api/values/5
+        // PUT api/phrases/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/values/5
+        // DELETE api/phrases/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

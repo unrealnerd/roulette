@@ -78,5 +78,23 @@ namespace roulette.api.Repository
                     new BsonDocument { { "$sample", new BsonDocument("size", N) } }
                 }).ToListAsync();
         }
+
+        public async Task<List<T>> First(int N)
+        {
+            return await _context.Collection.Aggregate<T>(new BsonDocument[]
+                {
+                    new BsonDocument { { "$sort", new BsonDocument("_id", 1) } },
+                    new BsonDocument { { "$sample", new BsonDocument("size", N) } }
+                }).ToListAsync();
+        }
+
+        public async Task<List<T>> Last(int N)
+        {
+            return await _context.Collection.Aggregate<T>(new BsonDocument[]
+                {
+                    new BsonDocument { { "$sort", new BsonDocument("_id", -1) } },
+                    new BsonDocument { { "$sample", new BsonDocument("size", N) } }
+                }).ToListAsync();
+        }
     }
 }
