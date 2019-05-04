@@ -29,7 +29,7 @@ namespace roulette.api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped(typeof(IDataContext<>), typeof(DataContext<>));
-            services.AddScoped(typeof(IRepository<>), typeof(MongoRepository<>));
+            services.AddScoped(typeof(IRepository<>), typeof(MongoRepository<>));           
 
             services.Configure<PhrasesOptions>(Configuration.GetSection("Phrases"));
             

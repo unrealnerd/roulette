@@ -2,7 +2,7 @@
 
 ### --- Gets one random Phrase --- ###
 # @name getNRandomPhrase
-GET {{url}}/phrases HTTP/1.1
+GET {{url}}/roulette HTTP/1.1
 
 ### --- Gets First N Phrase --- ###
 # @name getFirstNPhrase
