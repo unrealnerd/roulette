@@ -1,10 +1,10 @@
-version: '3.4'
+version: '3.7'
 services:
   mongo:
     image: mongo    
     container_name: mongo    
-    volumes:
-      - ./data:/data/db #maps data directory
+    volumes:      
+      - mongodata:/data/db
     restart: always
     ports:
       - 27017:27017
@@ -25,6 +25,8 @@ services:
     ports:
       - 80:80
     environment:
-      - ASPNETCORE_ENVIRONMENT=container
+      - ASPNETCORE_ENVIRONMENT=Container
     depends_on:
       - mongo
+volumes:
+  mongodata:

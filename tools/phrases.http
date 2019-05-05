@@ -1,4 +1,4 @@
-@url = http://localhost:5000/api
+@url = http://172.16.2.117/api
 
 ### --- Gets one random Phrase --- ###
 # @name getNRandomPhrase
