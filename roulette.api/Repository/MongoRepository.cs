@@ -84,7 +84,7 @@ namespace roulette.api.Repository
             return await _context.Collection.Aggregate<T>(new BsonDocument[]
                 {
                     new BsonDocument { { "$sort", new BsonDocument("_id", 1) } },
-                    new BsonDocument { { "$sample", new BsonDocument("size", N) } }
+                    new BsonDocument { { "$limit", N } }
                 }).ToListAsync();
         }
 
@@ -93,7 +93,7 @@ namespace roulette.api.Repository
             return await _context.Collection.Aggregate<T>(new BsonDocument[]
                 {
                     new BsonDocument { { "$sort", new BsonDocument("_id", -1) } },
-                    new BsonDocument { { "$sample", new BsonDocument("size", N) } }
+                    new BsonDocument { { "$limit", N } }
                 }).ToListAsync();
         }
     }

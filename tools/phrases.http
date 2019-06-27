@@ -1,4 +1,4 @@
-@url = http://172.16.2.117/api
+@url = https://localhost:5001/api
 
 ### --- Gets one random Phrase --- ###
 # @name getNRandomPhrase
@@ -9,13 +9,13 @@ GET {{url}}/roulette HTTP/1.1
 GET {{url}}/roulette/first/3 HTTP/1.1
 
 ### --- Gets Last N Phrase --- ###
-# @name getFirstNPhrase
+# @name getLastNPhrase
 GET {{url}}/roulette/last/3 HTTP/1.1
 
 
 ### --- Gets Phrases by Id --- ###
 # @name getPhraseById
-GET {{url}}/roulette/getbyid/{{getNRandomPhrase.response.body.$[0].id}} HTTP/1.1
+GET {{url}}/roulette/getbyid/5cceebaecf3eb90001b818a0 HTTP/1.1
 
 
 ### --- Creates a Phrase --- ###
@@ -24,6 +24,6 @@ POST {{url}}/roulette HTTP/1.1
 Content-Type:application/json
 
 {
-    "key": "You Can’t Have Your Cake And Eat It Too",
-    "value": "This proverb highlights how sometimes there might be two desirable things that someone wants, but they can’t have both of those things because they contradict each other."
+    "key": "A bird in the hand is worth two in the bush",
+    "value": "Means it's better to have the certainty of a small thing than the possibility of something greater which may come to nothing."
 }
