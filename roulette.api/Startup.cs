@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using roulette.api.Options;
 using roulette.api.Repository;
+using Microsoft.Extensions.Hosting;
 
 namespace roulette.api
 {
@@ -24,12 +25,12 @@ namespace roulette.api
             services.AddScoped(typeof(IRepository<>), typeof(MongoRepository<>));           
 
             services.Configure<PhrasesOptions>(Configuration.GetSection("Phrases"));
-            
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddControllers();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -42,7 +43,12 @@ namespace roulette.api
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }

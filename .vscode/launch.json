@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/roulette.api/bin/Debug/netcoreapp2.2/roulette.api.dll",
+            "program": "${workspaceFolder}/roulette.api/bin/Debug/netcoreapp3.1/roulette.api.dll",
             "args": [],
             "cwd": "${workspaceFolder}/roulette.api",
             "stopAtEntry": false,
